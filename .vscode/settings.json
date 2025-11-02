@@ -1,0 +1,40 @@
+{
+  "evenBetterToml.schema.links": true,
+  "evenBetterToml.schema.enabled": true,
+  "evenBetterToml.formatter.crlf": false,
+  "evenBetterToml.formatter.columnWidth": 88,
+  "evenBetterToml.formatter.alignEntries": false,
+  "evenBetterToml.formatter.allowedBlankLines": 1,
+  "evenBetterToml.formatter.arrayAutoCollapse": false,
+  "[toml]": {
+    "editor.tabSize": 4,
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "tamasfe.even-better-toml"
+  },
+
+  "ruff.nativeServer": "on",
+  "notebook.lineNumbers": "on",
+  "notebook.output.scrolling": true,
+  "notebook.formatOnSave.enabled": true,
+  "jupyter.themeMatplotlibPlots": true,
+  "python.terminal.activateEnvironment": false,
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.typeCheckingMode": "standard",
+  "python.analysis.completeFunctionParens": true,
+  "jupyter.widgetScriptSources": [
+    "unpkg.com", "jsdelivr.com"
+  ],
+  "notebook.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "[python]": {
+    "editor.tabSize": 4,
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.ruff": "explicit",
+      "source.organizeImports.ruff": "explicit"
+    }
+  },
+}
