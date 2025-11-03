@@ -86,3 +86,85 @@ update:
 [group('setup')]
 outdated:
     uv pip list --outdated
+
+# ============ Web (Frontend) ============
+
+# Install web dependencies
+[group('web')]
+web-install:
+    cd web && bun install
+
+# Run web development server
+[group('web')]
+web-dev:
+    cd web && bun run dev
+
+# Build web for production
+[group('web')]
+web-build:
+    cd web && bun run build
+
+# Preview web production build
+[group('web')]
+web-serve:
+    cd web && bun run serve
+
+# Run web tests
+[group('web')]
+web-test:
+    cd web && bun run test
+
+# Format web code
+[group('web')]
+web-fmt:
+    cd web && bun run format --write
+
+# Check web code formatting
+[group('web')]
+web-fmt-check:
+    cd web && bun run format
+
+# Lint web code
+[group('web')]
+web-lint:
+    cd web && bun run lint
+
+# Check and fix web code (format + lint)
+[group('web')]
+web-check:
+    cd web && bun run check --write
+
+# Run all web checks without fixing
+[group('web')]
+web-check-all: web-fmt-check web-lint
+
+# Clean web build artifacts
+[group('web')]
+web-clean:
+    cd web && rm -rf dist .vite node_modules/.vite
+
+# ============ Combined Commands ============
+
+# Install all dependencies (backend + web)
+[group('setup')]
+install-all: install web-install
+
+# Run both backend and web in development mode (requires tmux or parallel)
+[group('dev')]
+dev-all:
+    @echo "Starting backend and web servers..."
+    @echo "Backend: http://localhost:8000"
+    @echo "Web: http://localhost:3000"
+    just dev & just web-dev
+
+# Format all code (backend + web)
+[group('lint')]
+fmt-all: fmt web-fmt
+
+# Check all code (backend + web)
+[group('lint')]
+check-all: check web-check-all
+
+# Clean all build artifacts (backend + web)
+[group('clean')]
+clean-all: clean web-clean
