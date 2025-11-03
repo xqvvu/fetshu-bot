@@ -38,6 +38,13 @@ class Settings(BaseSettings):
     CORS_ALLOW_METHODS: list[str] = ["*"]
     CORS_ALLOW_HEADERS: list[str] = ["*"]
 
+    # Coze AI 配置
+    COZE_API_BASE_URL: str = "https://api.coze.cn"
+    COZE_ACCESS_TOKEN: str = ""  # 从环境变量获取
+    COZE_WORKFLOW_ID: str = ""  # 从环境变量获取
+    COZE_APP_ID: str = ""  # 从环境变量获取
+    COZE_TIMEOUT: int = 30  # API 请求超时时间（秒）
+
     # 数据库配置
     DATABASE_URL: str = "sqlite+aiosqlite:///./feishu-bot.sqlite"
     DATABASE_ECHO: bool = False  # 设置为 True 以启用 SQL 查询日志

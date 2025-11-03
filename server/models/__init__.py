@@ -6,6 +6,14 @@
 - SQLAlchemy 模型用于数据库持久化
 """
 
+from .coze import (
+    CozeAIResponse,
+    CozeErrorResponse,
+    CozeMessage,
+    CozeWorkflowChatRequest,
+    CozeWorkflowEvent,
+    CozeWorkflowResponse,
+)
 from .base import Base, PrimaryKeyMixin, TimestampMixin
 from .health import HealthResponse
 from .webhook import FeishuWebhookEvent, WebhookChallenge, WebhookResponse
@@ -16,6 +24,15 @@ __all__ = [
     "FeishuWebhookEvent",
     "WebhookChallenge",
     "WebhookResponse",
+
+    # Coze 模型
+    "CozeAIResponse",
+    "CozeErrorResponse",
+    "CozeMessage",
+    "CozeWorkflowChatRequest",
+    "CozeWorkflowEvent",
+    "CozeWorkflowResponse",
+
     # SQLAlchemy 模型基类和 Mixin
     "Base",
     "PrimaryKeyMixin",
