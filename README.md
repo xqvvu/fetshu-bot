@@ -32,7 +32,7 @@
 
 ```
 feishu-bot/
-├── src/
+├── server/               # 后端服务（FastAPI）
 │   ├── api/              # API 路由层
 │   │   ├── __init__.py   # 路由模块
 │   │   ├── health.py     # 健康检查端点
@@ -49,6 +49,11 @@ feishu-bot/
 │   │   └── webhook_handler.py  # Webhook 处理器
 │   ├── app.py            # FastAPI 应用实例
 │   └── bootstrap.py      # 应用启动脚本
+├── web/                  # Web 前端（React + Vite）
+│   ├── src/              # 前端源代码
+│   ├── public/           # 静态资源
+│   ├── package.json      # 前端依赖配置
+│   └── vite.config.ts    # Vite 配置
 ├── openspec/             # OpenSpec 变更管理
 │   ├── AGENTS.md         # AI 助手指南
 │   ├── changes/          # 变更提案
@@ -130,13 +135,13 @@ CORS_ALLOW_CREDENTIALS=true
 just dev
 
 # 或者
-uv run python -m src.bootstrap --reload
+uv run python -m server.bootstrap --reload
 
 # 生产模式
 just run
 
 # 或者
-uv run python -m src.bootstrap --no-reload
+uv run python -m server.bootstrap --no-reload
 ```
 
 应用启动后可访问：
