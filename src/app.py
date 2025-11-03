@@ -4,12 +4,17 @@ FastAPI 应用工厂。
 本模块创建并配置 FastAPI 应用实例，包括所有必要的中间件、异常处理器和路由。
 """
 
+import logging
+
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
 from .api import register_routers
 from .core import get_settings
+from .core.database import dispose_engine, init_db
+
+logger = logging.getLogger(__name__)
 
 
 def create_app() -> FastAPI:
@@ -75,6 +80,34 @@ def create_app() -> FastAPI:
 
     # 注册所有 API 路由
     register_routers(app)
+
+    # 注册数据库生命周期事件
+    @app.on_event("startup")
+    async def startup_event():
+        """
+        应用启动事件：初始化数据库。
+
+        在应用启动时创建所有数据库表。
+        如果数据库初始化失败，应用将无法启动。
+        """
+        try:
+            logger.info("应用启动：初始化数据库...")
+            await init_db()
+            logger.info("数据库初始化成功")
+        except Exception as e:
+            logger.error(f"数据库初始化失败: {e}")
+            raise
+
+    @app.on_event("shutdown")
+    async def shutdown_event():
+        """
+        应用关闭事件：清理数据库连接。
+
+        在应用关闭时释放所有数据库连接。
+        """
+        logger.info("应用关闭：清理数据库连接...")
+        await dispose_engine()
+        logger.info("数据库连接已清理")
 
     return app
 

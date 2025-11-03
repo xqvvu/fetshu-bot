@@ -38,6 +38,12 @@ class Settings(BaseSettings):
     CORS_ALLOW_METHODS: list[str] = ["*"]
     CORS_ALLOW_HEADERS: list[str] = ["*"]
 
+    # 数据库配置
+    DATABASE_URL: str = "sqlite+aiosqlite:///./feishu-bot.sqlite"
+    DATABASE_ECHO: bool = False  # 设置为 True 以启用 SQL 查询日志
+    DATABASE_POOL_SIZE: int = 5
+    DATABASE_POOL_TIMEOUT: int = 30
+
 
 @lru_cache
 def get_settings() -> Settings:
