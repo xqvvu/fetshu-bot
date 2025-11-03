@@ -12,6 +12,11 @@
     "editor.defaultFormatter": "tamasfe.even-better-toml"
   },
 
+  "files.exclude": {
+    // 用 VS Code 直接打开 Web 项目，不要在根工作区开发 Web 项目
+    "web": true,
+  },
+
   "ruff.nativeServer": "on",
   "notebook.lineNumbers": "on",
   "notebook.output.scrolling": true,
