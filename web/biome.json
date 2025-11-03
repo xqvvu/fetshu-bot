@@ -1,0 +1,62 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.3.2/schema.json",
+  "vcs": {
+    "enabled": false,
+    "clientKind": "git",
+    "useIgnoreFile": false
+  },
+  "files": {
+    "ignoreUnknown": false,
+    "includes": [
+      "**/src/**/*",
+      "**/.vscode/**/*",
+      "**/index.html",
+      "**/vite.config.js",
+      "!**/src/routeTree.gen.ts",
+      "!**/src/styles.css"
+    ]
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "lineWidth": 80,
+    "attributePosition": "multiline",
+    "bracketSameLine": false
+  },
+  "linter": {
+    "domains": {
+      "react": "recommended"
+    },
+    "rules": {
+      "suspicious": {
+        "noUnknownAtRules": "off"
+      },
+      "style": {
+        "useSelfClosingElements": "on"
+      },
+      "nursery": {
+        "useConsistentArrowReturn": "off",
+        "noReactForwardRef": "error"
+      }
+    }
+  },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
+  },
+  "assist": {
+    "actions": {
+      "source": {
+        "useSortedAttributes": "on",
+        "useSortedProperties": "on"
+      }
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "double",
+      "semicolons": "always"
+    }
+  }
+}
