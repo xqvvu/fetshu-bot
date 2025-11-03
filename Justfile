@@ -15,17 +15,17 @@ install-dev:
 # Run the FastAPI development server
 [group('dev')]
 dev:
-    uv run python -m src.bootstrap --reload
+    uv run python -m server.bootstrap --reload
 
 # Run the application (production mode)
 [group('dev')]
 run:
-    uv run python -m src.bootstrap --no-reload
+    uv run python -m server.bootstrap --no-reload
 
 # Run bootstrap entry point (same as dev)
 [group('dev')]
 start:
-    uv run python -m src.bootstrap
+    uv run python -m server.bootstrap
 
 # Format code with ruff
 [group('lint')]
@@ -63,7 +63,7 @@ test:
 # Run tests with coverage (when implemented)
 [group('test')]
 test-cov:
-    uv run pytest --cov=src --cov-report=html --cov-report=term
+    uv run pytest --cov=server --cov-report=html --cov-report=term
 
 # Clean up generated files
 [group('clean')]
