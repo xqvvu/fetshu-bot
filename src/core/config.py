@@ -45,6 +45,12 @@ class Settings(BaseSettings):
     COZE_APP_ID: str = ""  # 从环境变量获取
     COZE_TIMEOUT: int = 30  # API 请求超时时间（秒）
 
+    # 数据库配置
+    DATABASE_URL: str = "sqlite+aiosqlite:///./feishu-bot.sqlite"
+    DATABASE_ECHO: bool = False  # 设置为 True 以启用 SQL 查询日志
+    DATABASE_POOL_SIZE: int = 5
+    DATABASE_POOL_TIMEOUT: int = 30
+
 
 @lru_cache
 def get_settings() -> Settings:

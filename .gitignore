@@ -18,3 +18,10 @@ wheels/
 test_*.py
 debug_*.py
 .history/
+# Environment
+.env
+.env.local
+
+# Database
+*.db
+*.sqlite

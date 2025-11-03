@@ -5,9 +5,12 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.14.0"
 dependencies = [
+    "aiosqlite>=0.21.0",
     "cozepy>=0.20.0",
     "fastapi[standard]>=0.120.4",
+    "greenlet>=3.2.4",
     "pydantic-settings>=2.11.0",
+    "sqlalchemy>=2.0.44",
 ]
 [dependency-groups]
 dev = [
